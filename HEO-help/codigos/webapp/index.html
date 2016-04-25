@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="msapplication-tap-highlight" content="no">
+    <meta name="description" content="Conheça o app Divanum, seu Divã online.">
+    <meta name="keywords" content="Inopus, WebApp, Ideia, Aplicativos, Desenvolvimento, Startup, Tecnologia, Empresas, Site">
+
+    <link rel="shortcut icon" type="image/png" href="img/favicon/favicon.png" />
+
+    <!-- Facebook-->
+    <meta property="og:locale" content="pt_BR">
+    <meta property="og:url" content="http://www.divanum.com.br">
+    <meta property="og:title" content="Divanum">
+    <meta property="og:site_name" content="Divanum">
+    <meta property="og:description" content="Conheça o app Divanum, seu Divã online.">
+    <meta property="og:image" content="http://www.inopus.com.br/img/favicon/favicon128.png">
+    <meta property="og:image:type" content="image/png">
+    <meta property="og:image:width" content="128">
+    <meta property="og:image:height" content="128">
+    <meta property="og:type" content="website">
+
+    <!-- Favicons-->
+    <meta name="msapplication-TileColor" content="#03a9f4">
+    <meta name="msapplication-TileImage" content="img/favicon/72.png">
+    <link rel="icon" href="img/favicon.png" sizes="72x72">
+
+    <!-- Favicons Apple-->
+    <link rel="apple-touch-icon" href="touch-icon-iphone.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="img/favicon/72.png">
+    <link rel="apple-touch-icon" sizes="96x96" href="img/favicon/96.png">
+    <link rel="apple-touch-icon" sizes="144x144" href="img/favicon/144.png">
+    <link rel="apple-touch-startup-image" href="img/favicon/144.png">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+
+    <!--  Android 5 Chrome Color-->
+    <meta name="theme-color" content="#03a9f4">
+
+    <!--Javascript-->
+    <script src="js/Classes/HttpReq.min.js"></script>
+    <script src="js/funcionalidadesDisponiveis.js"></script>
+    <script src="https://cdn.socket.io/socket.io-1.4.5.js"></script>
+    <script src="js/script.js"></script>
+    <script type="text/javascript" src="js/canvasjs.min.js"></script>
+
+
+    <!--Views-->
+    <script src="js/Classes/Views/PagIndex.js"></script>
+    <script src="js/Classes/Views/PagEstatisticas.js"></script>
+    <script src="js/Classes/Views/PagLogin.js"></script>
+    <script src="js/Classes/Views/PagFinancas.js"></script>
+    <script src="js/Classes/Views/PagCadastro.js"></script>
+    <script src="js/Classes/Views/PagCadastro2.js"></script>
+    <script src="js/Classes/Views/PagCadastro3.js"></script>
+    <script src="js/Classes/Views/PagCadastroPsicologo.js"></script>
+    <script src="js/Classes/Views/PagEstatisticasPsicologo.js"></script>
+    <script src="js/Classes/Pagina.js"></script>
+
+
+    <!--CSS-->
+    <link type="text/css" rel="stylesheet" href="css/Carregando.min.css" media="all">
+    <link type="text/css" rel="stylesheet" href="css/Alerta.min.css" media="all">
+    <link type="text/css" rel="stylesheet" href="css/materialize.min.css" media="all">
+    <link type="text/css" rel="stylesheet" href="css/style.min.css" media="all">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+
+    <title>Divanum</title>
+</head>
+<header>
+    <nav id="navHeader" class="light-blue">
+        <div class="nav-wrapper">
+            <div class="divLogo">
+                <a id="tituloHeader" onclick="pagina.abrirPaginas('Index')" class="brand-logo center logo pointer"><img id="logo" class="responsive-img" alt="logo" src="img/logoDiv.png" />
+                </a>
+            </div>
+            <ul id="slide-out" class="side-nav full">
+                <li>
+                    <a href="#" onclick="$('.button-collapse').sideNav('hide');pagina.abrirPaginas('Index');">Trocar de conversa</a>
+                </li>
+                <li>
+                    <a href="#" onclick="$('.button-collapse').sideNav('hide');pagina.abrirPaginas('Estatisticas');">Minhas Estatísticas</a>
+                </li>
+                <li>
+                    <a href="#" onclick="$('.button-collapse').sideNav('hide');pagina.abrirPaginas('Financas');">Finanças</a>
+                </li>
+                <li>
+                    <a href="#" onclick="$('.button-collapse').sideNav('hide'); pagina.abrirPaginas('CadastroPsicologo');">Cadastro Psicólogo</a>
+                </li>
+                <li>
+                    <a href="#" onclick="$('.button-collapse').sideNav('hide');pagina.abrirPaginas('EstatisiticasPsicologo');">Estatísticas Psicólogo</a>
+                </li>
+                <li>
+                    <a href="#modalSobre" class="modal-trigger" onclick="$('.button-collapse').sideNav('hide');">Sobre o Divanum</a>
+                </li>
+                <li>
+                    <a href="#modalTermos" class="modal-trigger" onclick="$('.button-collapse').sideNav('hide');">Termos</a>
+                </li>
+                <li>
+                    <a href="#" onclick="$('.button-collapse').sideNav('hide');pagina.abrirPaginas('Login');">Sair</a>
+                </li>
+            </ul>
+            <a href="#" data-activates="slide-out" class="button-collapse show-on-large right"><i class="mdi-navigation-menu center"></i></a>
+            <a href="#modalEmergencia" class="modal-trigger left"><i class="mdi-alert-error center"></i></a>
+        </div>
+    </nav>
+</header>
+
+<body class="white">
+    <div id="pagina">
+    </div>
+    <!--Modal Termos-->
+    <div id="modalTermos" class="modal modal-fixed-footer">
+        <div class="modal-content">
+            <div class="row">
+                <div class="col s12">
+                    <h5>Termos de Uso</h5>
+                </div>
+                <div class="col s12">
+                    <p>Declaro que conheço e cumprei os requisitos do Contrato Padrão do Divanum, constantes do aplicativo, bem como conheço e aceito de forma irrestrita o teor das cláusulas padrão que compõem o Contrato Padrão.</p>
+                    <p>Declaro que conheço e cumprei os requisitos do Contrato de Comunicação com um Profissional, constantes do aplicativo, bem como conheço e aceito de forma irrestrita o teor das cláusulas padrão que compõem o Padrão do Divanum.
+
+                    </p>
+                </div>
+            </div>
+        </div>
+        <div class="modal-footer">
+            <a href="#!" class=" modal-action modal-close waves-effect waves-green blue-text btn-flat">Fechar</a>
+        </div>
+    </div>
+    <!-- Fim Modal Termos -->
+
+    <!--Modal Emergencia-->
+    <div id="modalEmergencia" class="modal modal-fixed-footer">
+        <div class="modal-content">
+            <div class="row">
+                <div class="col s12">
+                    <h5 class="center">Por favor, entre em contato com um Psicólogo.</h5>
+                </div>
+            </div>
+        </div>
+        <div class="modal-footer">
+            <a href="#!" class=" modal-action modal-close waves-effect waves-green blue-text btn-flat">Fechar</a>
+        </div>
+    </div>
+    <!-- Fim Modal Emergencia -->
+
+
+    <!-- Modal Sobre -->
+
+    <div id="modalSobre" class="modal modal-fixed-footer">
+        <div class="modal-content">
+            <div class="row">
+                <div class="col s12">
+                    <p>O aplicativo Devanum foi desenvolvido equipe do hackathon Angelhack.</p>
+                </div>
+            </div>
+            <div class="row center">
+                <div class="col s12">
+                    <span class="tituloDesenvolvedores">DESENVOLVEDORES</span>
+                </div>
+            </div>
+            <div class="row center">
+                <div class="col s6">
+                    <img class="circle responsive-img img" src="img/equipe/guilherme.jpg" />
+                </div>
+                <div class="col s6">
+                    <img class="circle responsive-img img" src="img/equipe/gustavo.jpg" />
+                </div>
+            </div>
+            <div class="row center">
+                <div class="col s6">
+                    <p class="tituloNomeDesenvolvedor">Guilherme Uezima</p>
+                    <p><i>Design e Integração</i></p>
+                </div>
+                <div class="col s6">
+                    <p class="tituloNomeDesenvolvedor">Gustavo Soré</p>
+                    <p><i>Back-End</i></p>
+                </div>
+            </div>
+            <div class="row center">
+                <div class="col s6">
+                    <img class="circle responsive-img img" src="img/equipe/luccas.jpg" />
+                </div>
+                <div class="col s6">
+                    <img class="circle responsive-img img" src="img/equipe/michel.jpg" />
+                </div>
+            </div>
+            <div class="row center">
+                <div class="col s6">
+                    <p class="tituloNomeDesenvolvedor">Luccas Yoshimoto</p>
+                    <p><i>Design de sistemas</i></p>
+                </div>
+                <div class="col s6">
+                    <p class="tituloNomeDesenvolvedor">Michel Zarzour Filho</p>
+                    <p><i>Front-End</i></p>
+                </div>
+
+            </div>
+            <div class="row center">
+                <div class="col s6">
+                    <img class="circle responsive-img img" src="img/equipe/otavio.jpg" />
+                </div>
+            </div>
+            <div class="row center">
+                <div class="col s6">
+                    <p class="tituloNomeDesenvolvedor">Otavio R. Rossi</p>
+                    <p><i>Consultor de Negócios</i></p>
+                </div>
+            </div>
+        </div>
+        <div class="modal-footer">
+            <a href="#!" class=" modal-action modal-close waves-effect waves-green blue-text btn-flat">Fechar</a>
+        </div>
+    </div>
+    <!-- Fim Modal Sobre -->
+
+
+
+
+    <!--Modal Match-->
+    <div id="modalMatch" class="modal modal-fixed-footer">
+        <div class="modal-content">
+            <div class="row">
+                <div class="col s12">
+                    <p class="center">O conversa está legal, continuem assim</p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col s4 center"><i class="medium material-icons">face</i></div>
+                <div class="col s4 center"><i class="medium material-icons">done</i></div>
+                <div class="col s4 center"><i class="medium material-icons">tag_faces</i></div>
+            </div>
+        </div>
+        <div class="modal-footer">
+            <a href="#!" class=" modal-action modal-close waves-effect waves-green blue-text btn-flat">Fechar</a>
+        </div>
+    </div>
+    <!-- Fim Modal Match    $('#modalMatch').openModal(); -->
+
+    <!--Modal No Match-->
+    <div id="modalNoMatch" class="modal modal-fixed-footer">
+        <div class="modal-content">
+            <div class="row">
+                <div class="col s12">
+                    <p class="center">Parece que a conversa não está muito boa, Estamos te redirecionando para outra conversa</p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col s4 center"><i class="medium material-icons">face</i></div>
+                <div class="col s4 center"><i class="medium material-icons">close</i></div>
+                <div class="col s4 center"><i class="medium material-icons">tag_faces</i></div>
+            </div>
+        </div>
+        <div class="modal-footer">
+            <a href="#!" class=" modal-action modal-close waves-effect waves-green blue-text btn-flat">Fechar</a>
+        </div>
+    </div>
+    <!-- Fim Modal No Match -->
+
+
+    <script src="js/jquery.min.js"></script>
+    <script src="js/materialize.min.js"></script>
+    <script src="js/datePicker.js"></script>
+</body>
+
+</html>
